@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "ChocoFruta API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth Login",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8081/api/auth/login", "host": ["http://localhost:8081"], "path": ["api","auth","login"]},
+        "body": {"mode": "raw", "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"}
+      }
+    },
+    {
+      "name": "Auth Refresh",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "url": {"raw": "http://localhost:8081/api/auth/refresh", "host": ["http://localhost:8081"], "path": ["api","auth","refresh"]}
+      }
+    },
+    {
+      "name": "Productos List",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8081/api/productos?page=0&size=10", "host": ["http://localhost:8081"], "path": ["api","productos"], "query": [{"key":"page","value":"0"},{"key":"size","value":"10"}]}
+      }
+    },
+    {
+      "name": "Productos Crear",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}, {"key":"Authorization","value":"Bearer {{token}}"}],
+        "url": {"raw": "http://localhost:8081/api/productos", "host": ["http://localhost:8081"], "path": ["api","productos"]},
+        "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"Chocolate Bitter\",\n  \"descripcion\": \"70% cacao\",\n  \"precio\": 2500,\n  \"stock\": 10\n}"}
+      }
+    },
+    {
+      "name": "Carrito Ver",
+      "request": {
+        "method": "GET",
+        "header": [{"key":"Authorization","value":"Bearer {{token}}"}],
+        "url": {"raw": "http://localhost:8081/api/carrito", "host": ["http://localhost:8081"], "path": ["api","carrito"]}
+      }
+    },
+    {
+      "name": "Boleta Checkout",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Authorization","value":"Bearer {{token}}"}],
+        "url": {"raw": "http://localhost:8081/api/boletas", "host": ["http://localhost:8081"], "path": ["api","boletas"]}
+      }
+    },
+    {
+      "name": "Historial Boletas",
+      "request": {
+        "method": "GET",
+        "header": [{"key":"Authorization","value":"Bearer {{token}}"}],
+        "url": {"raw": "http://localhost:8081/api/boletas/historial", "host": ["http://localhost:8081"], "path": ["api","boletas","historial"]}
+      }
+    }
+  ],
+  "variable": [{"key":"token","value":""}]
+}
